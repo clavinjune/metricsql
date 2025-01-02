@@ -117,6 +117,9 @@ func IsSupportedFunction(funcName string) bool {
 	if IsAggrFunc(funcName) {
 		return true
 	}
+	if IsAnomalyFuncs(funcName) {
+		return true
+	}
 	return false
 }
 
@@ -130,7 +133,8 @@ func checkSupportedFunctions(e Expr) error {
 		if !ok {
 			return
 		}
-		if !IsRollupFunc(fe.Name) && !IsTransformFunc(fe.Name) {
+
+		if !IsSupportedFunction(fe.Name) {
 			err = fmt.Errorf("unsupported function %q", fe.Name)
 		}
 	})
