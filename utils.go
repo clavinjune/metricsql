@@ -117,7 +117,7 @@ func IsSupportedFunction(funcName string) bool {
 	if IsAggrFunc(funcName) {
 		return true
 	}
-	func IsAnomalyFunc(funcName) {
+	if IsAnomalyFunc(funcName) {
 		return true
 	}
 	return false
